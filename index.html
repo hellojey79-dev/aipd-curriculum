@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIPD 승진자 과정 커리큘럼</title>
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        :root {
+            /* Professional Tech Theme */
+            --primary-bg: #f8fafc;       /* 아주 연한 회색 배경 */
+            --card-bg: #ffffff;          /* 흰색 카드 */
+            --primary-text: #1e293b;     /* 진한 네이비 텍스트 (가독성) */
+            --secondary-text: #64748b;   /* 회색 서브 텍스트 */
+            --accent-color: #2563eb;     /* 신뢰의 로얄 블루 */
+            --accent-light: #eff6ff;     /* 연한 블루 배경 */
+            --success-color: #059669;    /* 긍정적 그린 */
+            --code-bg: #f1f5f9;          /* 코드 블록 밝은 배경 (수정됨) */
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --border-radius: 12px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* Header Design: Clean & Authoritative */
+        header {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        /* 장식용 작은 바 */
+        header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 24px auto 0;
+            border-radius: 2px;
+        }
+
+        p.subtitle {
+            font-size: 1rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            margin: 0;
+            color: #0f172a;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        h1 span {
+            color: var(--secondary-text);
+            font-weight: 400;
+            font-size: 0.6em;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Section Design */
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 10px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Grid Layouts - Modified for wider cards (2 columns on desktop) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        /* Card Style: Clean & Boxy */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 28px;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        /* Tools Styling */
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            width: 100%;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 16px;
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-light);
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .tool-name {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #0f172a;
+        }
+
+        .tool-desc {
+            font-size: 0.95rem;
+            color: var(--primary-text);
+            margin-bottom: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .tool-advantages {
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .tool-advantages ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .tool-advantages li {
+            margin-bottom: 6px;
+        }
+        
+        .tool-advantages li:last-child {
+            margin-bottom: 0;
+        }
+
+        .badge-advantage {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        /* Work Prompt Guide Styling */
+        .prompt-intro {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .equation-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .equation-box {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 1px solid #cbd5e1;
+        }
+        
+        .equation-operator { color: var(--accent-color); font-weight: bold; font-size: 1.2rem; }
+        .equation-result { background: var(--accent-color); color: white; border: none; }
+
+        /* Code Block Styling */
+        .prompt-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .prompt-header {
+            background: #f8fafc;
+            padding: 16px 24px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .prompt-title {
+            font-weight: 700;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn {
+            background: white;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+            color: #0f172a;
+        }
+
+        /* Code Area Styling - Light Theme Update */
+        .code-area {
+            background: var(--code-bg);
+            color: #334155; /* 다크 슬레이트 텍스트 */
+            padding: 24px;
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            position: relative;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        /* Syntax highlighting mimic - Adjusted for Light Theme */
+        .code-highlight { 
+            color: #0f172a; 
+            font-weight: 700;
+            background-color: rgba(37, 99, 235, 0.1); /* 연한 파란색 배경 */
+            padding: 2px 4px;
+            border-radius: 4px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        } 
+        
+        .code-comment { 
+            color: #059669; /* 초록색 코멘트 */
+            font-style: italic; 
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: #f0fdf4; /* Very light green */
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        /* Curriculum List */
+        .curriculum-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .curriculum-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: background 0.2s;
+        }
+        
+        .curriculum-item:hover {
+            border-color: var(--accent-color);
+        }
+
+        .time-badge {
+            background: var(--accent-light);
+            color: var(--accent-color);
+            font-weight: 700;
+            padding: 8px 0;
+            width: 80px;
+            text-align: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .curr-content h3 {
+            margin: 0 0 4px 0;
+            font-size: 1.15rem;
+            color: #0f172a;
+        }
+
+        .curr-content p {
+            margin: 0;
+            color: var(--secondary-text);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .grid-container { grid-template-columns: 1fr; }
+            .curriculum-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .time-badge { width: auto; padding: 6px 12px; }
+        }
+
+        /* PRINT STYLES (PDF 저장용) */
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .container {
+                width: 100%;
+                max-width: none;
+                padding: 0;
+                margin: 0;
+            }
+            .no-print, .copy-btn {
+                display: none !important;
+            }
+            .card, .prompt-card, .prompt-intro, .tip-box, .curriculum-item, section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            header {
+                margin-bottom: 30px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            footer {
+                margin-top: 30px;
+                border-top: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <p class="subtitle">폴리텍대학 교직원 역량 강화</p>
+        <h1>AI 업무 혁신: AIPD 양성 과정<br><span>생성형 AI 프롬프트 디자이너 4시간 속성 과정</span></h1>
+    </header>
+
+    <!-- 섹션 1: AI Tools -->
+    <section>
+        <h2>🛠️ 업무 혁신을 위한 핵심 도구</h2>
+        <div class="grid-container">
+            <!-- ChatGPT -->
+            <div class="card">
+                <div class="tool-header">
+                    <span class="tool-icon">🧠</span>
+                    <div class="tool-name">ChatGPT</div>
+                </div>
+                <div class="tool-desc">가장 범용적인 대화형 AI로, 기획부터 코딩까지 모든 업무의 기본이 되는 비서입니다.</div>
+                <div class="tool-advantages">
+                    <span class="badge-advantage">KEY BENEFITS</span>
+                    <ul>
+                        <li>기획서 및 보고서 초안 작성 탁월</li>
+                        <li>엑셀 매크로(VBA), 파이썬 코드 생성 가능</li>
+                        <li>다양한 플러그인으로 기능 무한 확장</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Gemini -->
+            <div class="card">
+                <div class="tool-header">
+                    <span class="tool-icon">💎</span>
+                    <div class="tool-name">Gemini</div>
+                </div>
+                <div class="tool-desc">구글 생태계와 결합된 멀티모달 AI로, 시각 자료 분석에 최적화되어 있습니다.</div>
+                <div class="tool-advantages">
+                    <span class="badge-advantage">KEY BENEFITS</span>
+                    <ul>
+                        <li>구글 Docs/Drive/Gmail 실시간 연동</li>
+                        <li>이미지, 차트, 그래프 인식 및 데이터 추출</li>
+                        <li>최신 정보 검색(Grounding) 기반 답변</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- NotebookLM -->
+            <div class="card">
+                <div class="tool-header">
+                    <span class="tool-icon">📓</span>
+                    <div class="tool-name">NotebookLM</div>
+                </div>
+                <div class="tool-desc">내가 업로드한 문서(PDF)만을 기반으로 답변하는 '나만의 연구 보조 AI'입니다.</div>
+                <div class="tool-advantages">
+                    <span class="badge-advantage">KEY BENEFITS</span>
+                    <ul>
+                        <li>할루시네이션(거짓 정보) 없는 정확한 팩트체크</li>
+                        <li>답변의 근거가 되는 페이지/출처 즉시 확인</li>
+                        <li>방대한 규정집, 매뉴얼, 논문 분석 최적화</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Notion AI -->
+            <div class="card">
+                <div class="tool-header">
+                    <span class="tool-icon">⚡</span>
+                    <div class="tool-name">Notion AI</div>
+                </div>
+                <div class="tool-desc">올인원 워크스페이스 노션에 탑재된 스마트 글쓰기 및 정리 자동화 도구입니다.</div>
+                <div class="tool-advantages">
+                    <span class="badge-advantage">KEY BENEFITS</span>
+                    <ul>
+                        <li>회의록 드래그 한 번으로 자동 요약 및 할 일 추출</li>
+                        <li>거친 메모를 정중한 비즈니스 문체로 즉시 변환</li>
+                        <li>기존 업무 데이터베이스와의 강력한 연동</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션 2: Work Prompt Guide -->
+    <section>
+        <h2>🚀 실전 워크프롬프트(Work Prompt) 가이드</h2>
+        
+        <div class="prompt-intro">
+            <p style="margin:0; color:#475569;"><strong>워크프롬프트란?</strong><br>단순한 대화가 아닌, 업무 프로세스를 표준화하여 일관된 고품질 결과를 얻는 설계 기법입니다.</p>
+            <div class="equation-wrapper">
+                <div class="equation-box">Input (입력 데이터)</div>
+                <span class="equation-operator">+</span>
+                <div class="equation-box">Instructions (지시사항)</div>
+                <span class="equation-operator">=</span>
+                <div class="equation-box equation-result">Output (표준화 결과)</div>
+            </div>
+        </div>
+
+        <!-- Prompt 1 -->
+        <div class="prompt-card">
+            <div class="prompt-header">
+                <div class="prompt-title">📌 1. 회의록 정리 및 액션 아이템 도출</div>
+                <button class="copy-btn" onclick="copyToClipboard('prompt1')">복사하기</button>
+            </div>
+            <div class="code-area" id="prompt1"><span class="code-comment"># 상황: 회의 속기록을 정돈된 보고서와 실행 계획으로 변환</span>
+
+"아래 입력된 텍스트는 오늘 진행된 부서 주간 회의의 속기록입니다. 이 내용을 바탕으로 다음 형식에 맞춰 회의록을 작성해 주세요.
+
+1. 주요 결정 사항: 핵심 내용을 3줄 이내 개조식으로 요약
+2. 액션 아이템(Action Item): 아래 양식의 표로 정리
+   - 업무 내용 | 담당자 | 완료 기한
+
+<span class="code-highlight">[회의 속기록 입력]: 
+(여기에 회의 내용을 붙여넣으세요)</span>"</div>
+        </div>
+
+        <!-- Prompt 2 -->
+        <div class="prompt-card">
+            <div class="prompt-header">
+                <div class="prompt-title">📊 2. 주간 업무 보고서 작성</div>
+                <button class="copy-btn" onclick="copyToClipboard('prompt2')">복사하기</button>
+            </div>
+            <div class="code-area" id="prompt2"><span class="code-comment"># 상황: 나열된 업무 메모를 격식 있는 보고서 문체로 변환</span>
+
+"나는 대학 행정 부서의 교직원입니다. 아래 나열된 업무 목록을 바탕으로 '주간 업무 보고서' 초안을 작성해 주세요.
+
+[작성 지침]
+- 문체: 격식 있고 간결한 '비즈니스 보고서' 톤
+- 구조: '금주 주요 실적'과 '차주 계획'으로 구분
+- 강조: 성과가 돋보이도록 수치는 볼드체 처리
+
+<span class="code-highlight">[수행 업무 목록]: 
+(여기에 메모한 업무 내용을 붙여넣으세요)</span>"</div>
+        </div>
+
+        <!-- Prompt 3 -->
+        <div class="prompt-card">
+            <div class="prompt-header">
+                <div class="prompt-title">📝 3. 기획서 목차 구성 (구조화)</div>
+                <button class="copy-btn" onclick="copyToClipboard('prompt3')">복사하기</button>
+            </div>
+            <div class="code-area" id="prompt3"><span class="code-comment"># 상황: 새로운 교육 프로그램 기획을 위한 논리적 뼈대 구성</span>
+
+"2025년도 교직원 역량 강화를 위한 '생성형 AI 활용 교육' 기획서를 작성하려고 합니다. 다음 필수 요소를 포함하여 논리적인 목차와 항목별 핵심 내용을 제안해 주세요.
+
+[필수 포함 요소]
+1. 추진 배경 (디지털 전환 트렌드 반영)
+2. 교육 개요 (대상, 일정, 목표)
+3. 주요 커리큘럼 (4단계 구성)
+4. 기대 효과 (업무 효율성)
+
+*출력 형식: 대항목 > 중항목 > 소항목으로 구조화하여 제시"</div>
+        </div>
+
+        <div class="tip-box">
+            <div style="font-size: 1.5rem;">💡</div>
+            <div>
+                <strong>프롬프트 성공의 열쇠</strong><br>
+                1. <strong>업무 흐름 분석:</strong> 무엇을 입력해서(Input) 어떤 결과(Output)를 원하는지 명확히 하세요.<br>
+                2. <strong>형식의 구체화:</strong> "표로 그려줘", "개조식으로 써줘", "이메일 톤으로 바꿔줘" 등 형식을 지정하세요.
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션 3: Curriculum -->
+    <section>
+        <h2>📅 4시간 속성 커리큘럼</h2>
+        <div class="curriculum-list">
+            <div class="curriculum-item">
+                <div class="time-badge">1교시</div>
+                <div class="curr-content">
+                    <h3>AI 이해와 도구 매칭 (Theory)</h3>
+                    <p>생성형 AI의 원리 이해 및 행정 업무별 최적의 AI 도구(ChatGPT, Gemini 등) 선택 전략</p>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="time-badge">2교시</div>
+                <div class="curr-content">
+                    <h3>RTCE 원칙 & 워크프롬프트 (Skill)</h3>
+                    <p>프롬프트 4대 원칙(Role, Task, Context, Example) 실습 및 나만의 업무 자동화 프롬프트 설계</p>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="time-badge">3교시</div>
+                <div class="curr-content">
+                    <h3>규정집 정복 & 문서 자동화 (Practical)</h3>
+                    <p>NotebookLM을 활용한 규정집/매뉴얼 팩트체크 및 Notion AI를 이용한 회의록/문서 정리 자동화</p>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="time-badge">4교시</div>
+                <div class="curr-content">
+                    <h3>멀티모달 & 종합 실습 (Advanced)</h3>
+                    <p>Gemini로 이미지/데이터 차트 분석하고, 실제 현업 과제를 해결해보는 종합 시뮬레이션</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 섹션 4: Expected Effects -->
+    <section style="background: var(--accent-light); padding: 40px; border-radius: 12px; text-align: center;">
+        <h2 style="justify-content: center; border: none; margin-bottom: 10px;">✨ 교육 기대 효과</h2>
+        <p style="color: var(--primary-text); font-size: 1.1rem; margin-bottom: 20px;">단순 반복 업무는 AI에게 위임하고, <strong>창의적인 기획과 의사결정</strong>에 집중하세요.</p>
+        <p style="color: var(--accent-color); font-weight: 700; font-size: 1.2rem;">"AI를 활용하는 능력이 곧 승진자의 핵심 경쟁력입니다."</p>
+    </section>
+
+</div>
+
+<footer>
+    © 2025 KOREA global coaching education center. All Rights Reserved.
+</footer>
+
+<script>
+    function copyToClipboard(elementId) {
+        const text = document.getElementById(elementId).innerText;
+        
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        
+        try {
+            document.execCommand('copy');
+            const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+            const originalText = btn.innerText;
+            btn.innerText = '복사 완료!';
+            btn.style.background = '#059669'; // Success Green
+            btn.style.color = 'white';
+            btn.style.borderColor = '#059669';
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.borderColor = '';
+            }, 2000);
+        } catch (err) {
+            console.error('복사 실패:', err);
+        }
+        
+        document.body.removeChild(textarea);
+    }
+</script>
+
+</body>
+</html>
